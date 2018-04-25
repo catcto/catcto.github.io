@@ -105,7 +105,7 @@ export default class view {
 
 		// 关卡信息
 		this.level = new PIXI.Text(
-			"关卡：0", 
+			"level：0",
 			{
 				fontFamily: "Arial", 
 				fontSize: 16, 
@@ -116,7 +116,7 @@ export default class view {
 
 		// 目标分数 
 		this.goal = new PIXI.Text(
-			"目标：0", 
+			"goal：0",
 			{
 				fontFamily: "Arial", 
 				fontSize: 16, 
@@ -188,7 +188,7 @@ export default class view {
 
 		// 奖励信息 
 		this.bountyLabel = new PIXI.Text(
-			"奖励 ", 
+			"bounty ",
 			{
 				fontFamily: "Arial",
 				fontSize: 16, 
@@ -217,7 +217,7 @@ export default class view {
 				get: () => this._bounty, 
 				set: value => {
 					this._bounty = value; 
-					this.bountyLabel.text = "奖励 " + value; 
+					this.bountyLabel.text = "bounty " + value;
 				}
 			}
 		); 
@@ -245,7 +245,7 @@ export default class view {
 		// 进入关卡前的屏幕信息
 		this.levelInfo = new PIXI.Container(); 
 		this.levelInfo.title = new PIXI.Text(
-			"关卡 n", 
+			"level n",
 			{
 				fontFamily: "Arial", 
 				fontSize: 30, 
@@ -262,7 +262,7 @@ export default class view {
 			}
 		); 
 		this.levelInfo.goal = new PIXI.Text(
-			"目标分数 xxxx", 
+			"goal score xxxx",
 			{
 				fontFamily: "Arial", 
 				fontSize: 14, 
@@ -696,7 +696,7 @@ export default class view {
 	// 显示连消信息
 	setCleanInfo(count) { 
 		this.cleanInfo.tween && this.cleanInfo.tween.kill(); 
-		this.cleanInfo.text = `${count}连消 ${count * count * 5}分`; 
+		this.cleanInfo.text = `${count} combo ${count * count * 5} score`;
 		this.cleanInfo.tween = TweenMax.fromTo(
 			this.cleanInfo, 
 			.3, 
@@ -714,20 +714,20 @@ export default class view {
 
 	// 当前关卡的文案 
 	setLevel(level) {
-		this.level.text = "关卡：" + level; 
-		this.levelInfo.title.text = "关卡" + level; 
+		this.level.text = "level：" + level;
+		this.levelInfo.title.text = "level" + level;
 	}
 
 	// 当前目标分数
 	setGoal(goal) {
-		this.goal.text = "目标：" + goal; 
-		this.levelInfo.goal.text = "目标分数 " + goal; 
+		this.goal.text = "goal：" + goal;
+		this.levelInfo.goal.text = "goal score " + goal;
 	}
 
 	// 显示奖励功能
 	showBountyInfo(count) {
 		this.bountyLabel.renderable = this.starInfo.renderable = true; 
-		this.starInfo.text = `剩余 ${count} 个星星`;
+		this.starInfo.text = `${count} star`;
 		// 初始化奖励分数
 		this.bounty = 2000; 
 		// 位置重置

@@ -8566,7 +8566,7 @@ var view = function () {
 		});
 
 		// 关卡信息
-		this.level = new PIXI.Text("关卡：0", {
+		this.level = new PIXI.Text("level：0", {
 			fontFamily: "Arial",
 			fontSize: 16,
 			fill: 0xffffff
@@ -8574,7 +8574,7 @@ var view = function () {
 		this.level.set({ top: 16, left: 16 });
 
 		// 目标分数 
-		this.goal = new PIXI.Text("目标：0", {
+		this.goal = new PIXI.Text("goal：0", {
 			fontFamily: "Arial",
 			fontSize: 16,
 			fill: 0xffffff,
@@ -8629,7 +8629,7 @@ var view = function () {
 		});
 
 		// 奖励信息 
-		this.bountyLabel = new PIXI.Text("奖励 ", {
+		this.bountyLabel = new PIXI.Text("bounty ", {
 			fontFamily: "Arial",
 			fontSize: 16,
 			fill: 0xffffff,
@@ -8653,7 +8653,7 @@ var view = function () {
 			},
 			set: function set(value) {
 				_this._bounty = value;
-				_this.bountyLabel.text = "奖励 " + value;
+				_this.bountyLabel.text = "bounty " + value;
 			}
 		});
 
@@ -8674,7 +8674,7 @@ var view = function () {
 
 		// 进入关卡前的屏幕信息
 		this.levelInfo = new PIXI.Container();
-		this.levelInfo.title = new PIXI.Text("关卡 n", {
+		this.levelInfo.title = new PIXI.Text("level n", {
 			fontFamily: "Arial",
 			fontSize: 30,
 			fill: 0xffffff,
@@ -8686,7 +8686,7 @@ var view = function () {
 			x: this.centerX,
 			top: 260 * ip6Ratio
 		});
-		this.levelInfo.goal = new PIXI.Text("目标分数 xxxx", {
+		this.levelInfo.goal = new PIXI.Text("goal score xxxx", {
 			fontFamily: "Arial",
 			fontSize: 14,
 			fill: 0xffffff,
@@ -8714,7 +8714,7 @@ var view = function () {
 		this.bombList = [];
 
 		// 加载图片
-		PIXI.loader.add([{ name: "red", url: "images/red@2x.png" }, { name: "green", url: "images/green@2x.png" }, { name: "blue", url: "images/blue@2x.png" }, { name: "yellow", url: "images/yellow@2x.png" }, { name: "purple", url: "images/purple@2x.png" }, { name: "star_red", url: "images/star_red@2x.png" }, { name: "star_green", url: "images/star_green@2x.png" }, { name: "star_blue", url: "images/star_blue@2x.png" }, { name: "star_yellow", url: "images/star_yellow@2x.png" }, { name: "star_purple", url: "images/star_purple@2x.png" }, { name: "pause", url: "images/pause@2x.png" }, { name: "play", url: "images/play@2x.png" }, { name: "cover", url: "images/cover.jpg" }]).load(function () {
+		PIXI.loader.add([{ name: "red", url: "images/red@2x.png" }, { name: "green", url: "images/green@2x.png" }, { name: "blue", url: "images/blue@2x.png" }, { name: "yellow", url: "images/yellow@2x.png" }, { name: "purple", url: "images/purple@2x.png" }, { name: "star_red", url: "images/star_red@2x.png" }, { name: "star_green", url: "images/star_green@2x.png" }, { name: "star_blue", url: "images/star_blue@2x.png" }, { name: "star_yellow", url: "images/star_yellow@2x.png" }, { name: "star_purple", url: "images/star_purple@2x.png" }, { name: "pause", url: "images/pause@2x.png" }, { name: "play", url: "images/play@2x.png" }, { name: "cover", url: coverImage }]).load(function () {
 			["red", "green", "blue", "yellow", "purple"].forEach(function (clr, index) {
 				_this.tileTextures[index].baseTexture = PIXI.utils.TextureCache[clr].baseTexture;
 				_this.starTextures[index].baseTexture = PIXI.utils.TextureCache["star_" + clr].baseTexture;
@@ -9095,7 +9095,7 @@ var view = function () {
 		key: "setCleanInfo",
 		value: function setCleanInfo(count) {
 			this.cleanInfo.tween && this.cleanInfo.tween.kill();
-			this.cleanInfo.text = count + "\u8FDE\u6D88 " + count * count * 5 + "\u5206";
+			this.cleanInfo.text = count + "combo " + count * count * 5 + " score";
 			this.cleanInfo.tween = TweenMax.fromTo(this.cleanInfo, .3, {
 				alpha: 0
 			}, {
@@ -9111,8 +9111,8 @@ var view = function () {
 	}, {
 		key: "setLevel",
 		value: function setLevel(level) {
-			this.level.text = "关卡：" + level;
-			this.levelInfo.title.text = "关卡" + level;
+			this.level.text = "level：" + level;
+			this.levelInfo.title.text = "level" + level;
 		}
 
 		// 当前目标分数
@@ -9120,8 +9120,8 @@ var view = function () {
 	}, {
 		key: "setGoal",
 		value: function setGoal(goal) {
-			this.goal.text = "目标：" + goal;
-			this.levelInfo.goal.text = "目标分数 " + goal;
+			this.goal.text = "goal：" + goal;
+			this.levelInfo.goal.text = "goal score " + goal;
 		}
 
 		// 显示奖励功能
@@ -9132,7 +9132,7 @@ var view = function () {
 			var _this7 = this;
 
 			this.bountyLabel.renderable = this.starInfo.renderable = true;
-			this.starInfo.text = "\u5269\u4F59 " + count + " \u4E2A\u661F\u661F";
+			this.starInfo.text = "" + count + " remaining stars";
 			// 初始化奖励分数
 			this.bounty = 2000;
 			// 位置重置
